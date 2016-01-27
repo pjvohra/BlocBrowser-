@@ -202,10 +202,13 @@
     [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
     [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
     [self.reloadButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-}
 
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"Hello!!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
+    [alert show];
+    
+    
+ 
+}
 @end
 
 
