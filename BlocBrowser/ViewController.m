@@ -9,13 +9,14 @@
 #import <WebKit/WebKit.h>
 #import "ViewController.h"
 #import "AwesomeFloatingToolbar.h"
+@interface ViewController () <WKNavigationDelegate, UITextFieldDelegate, AwesomeFloatingToolbarDelegate>
 
 #define kWebBrowserBackString NSLocalizedString(@"Back", @"Back command")
 #define kWebBrowserForwardString NSLocalizedString(@"Forward", @"Forward command")
 #define kWebBrowserStopString NSLocalizedString(@"Stop", @"Stop command")
 #define kWebBrowserRefreshString NSLocalizedString(@"Refresh", @"Reload command")
 
-@interface ViewController () <WKNavigationDelegate, UITextFieldDelegate, AwesomeFloatingToolbarDelegate>
+
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) UIButton *reloadButton;
@@ -45,7 +46,7 @@
     
     self.awesomeToolbar = [[AwesomeFloatingToolbar alloc] initWithFourTitles:@[kWebBrowserBackString, kWebBrowserForwardString, kWebBrowserStopString, kWebBrowserRefreshString]];
     self.awesomeToolbar.delegate = self;
-    
+
     for (UIView *viewToAdd in @[self.webView, self.textField, self.awesomeToolbar]) {
         [mainView addSubview:viewToAdd];
     }
@@ -74,11 +75,11 @@
         // Now, assign the frames
         self.textField.frame = CGRectMake(0, 0, width, itemHeight);
         self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
-        
+        self.awesomeToolbar.frame = CGRectMake(20, 100, 280, 60);
         
     }
 
-     self.awesomeToolbar.frame = CGRectMake(20, 100, 280, 60);
+
 
  #pragma mark - AwesomeFloatingToolbarDelegate
 - (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
@@ -185,7 +186,6 @@
     
     self.textField.text = nil;
     [self updateButtonsAndTitle];
-}
 
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"Hello!!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Continue", nil];
