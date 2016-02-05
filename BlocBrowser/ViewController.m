@@ -9,13 +9,13 @@
 #import <WebKit/WebKit.h>
 #import "ViewController.h"
 #import "AwesomeFloatingToolbar.h"
-@interface ViewController () <WKNavigationDelegate, UITextFieldDelegate, AwesomeFloatingToolbarDelegate>
 
 #define kWebBrowserBackString NSLocalizedString(@"Back", @"Back command")
 #define kWebBrowserForwardString NSLocalizedString(@"Forward", @"Forward command")
 #define kWebBrowserStopString NSLocalizedString(@"Stop", @"Stop command")
 #define kWebBrowserRefreshString NSLocalizedString(@"Refresh", @"Reload command")
 
+@interface ViewController () <WKNavigationDelegate, UITextFieldDelegate, AwesomeFloatingToolbarDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UITextField *textField;
